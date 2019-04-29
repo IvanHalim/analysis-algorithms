@@ -12,7 +12,7 @@ def LastToStart(activities):
 def readfile(file):
     with open(file) as f:
         testcases = []
-        for _ in range(2):
+        for _ in range(3):
             activities = []
             n = int(next(f))
             for _ in range(n):
