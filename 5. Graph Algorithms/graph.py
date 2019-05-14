@@ -163,7 +163,7 @@ class Graph:
     # The main function that prints the Minimum  
     # Spanning Tree(MST) using the Prim's Algorithm.  
     # It is a O(ELogV) function 
-    def PrimMST(self):
+    def PrimMST(self, src):
         key    = {}      # To store the distances of vertices to their nearest neighbors
         parent = {}      # To store the parents of vertices
         heap   = Heap()  # Heap to store unselected vertices
@@ -180,8 +180,8 @@ class Graph:
             i += 1
 
         # Set the key value of src node to 0
-        key[heap.array[0][0]] = 0
-        heap.DecreaseKey(heap.array[0][0], 0)
+        key[src] = 0
+        heap.DecreaseKey(src, key[src])
 
         # Initialize size of min heap to V, the number
         # of vertices in the graph
