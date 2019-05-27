@@ -19,7 +19,7 @@ def PrintColor(color):
 def readfile(file):
     with open(file) as f:
         V = int(next(f))
-        graph = g.Graph(V)
+        graph = g.Graph()
         for _ in range(V):
             next(f)
         E = int(next(f))

@@ -91,8 +91,8 @@ class Heap:
         return False
 
 class Graph:
-    def __init__(self, V):
-        self.V = V
+    def __init__(self):
+        self.size = 0
         self.graph = defaultdict(list)
 
     # Adds an edge to an undirected graph
@@ -105,11 +105,22 @@ class Graph:
         # from dest to src also
         self.graph[dest].append([src, weight])
 
+        # Set the number of vertices V to be equal to the number of keys
+        self.size = len(self.graph.keys())
+
     # Adds an edge to a directed graph
     def AddDirected(self, src, dest, weight=1):
         # Add an edge from src to dest. A new node
         # is added to the adjacency list of src.
         self.graph[src].append([dest, weight])
+
+        # If dest is not a node in graph
+        # Add dest into graph keys 
+        if dest not in self.graph.keys():
+            self.graph[dest] = []
+
+        # Set the number of vertices V to be equal to the number of keys
+        self.size = len(self.graph.keys())
 
     # The main function that calculates distances
     # of shortest paths from src to all vertices.
@@ -133,7 +144,7 @@ class Graph:
 
         # Initialize size of min heap to V, the number
         # of vertices in the graph
-        heap.size = self.V
+        heap.size = self.size
 
         # The loop continues until all the vertices
         # have been finalized
@@ -185,7 +196,7 @@ class Graph:
 
         # Initialize size of min heap to V, the number
         # of vertices in the graph
-        heap.size = self.V
+        heap.size = self.size
 
         # The loop continues until all the vertices
         # have been finalized
